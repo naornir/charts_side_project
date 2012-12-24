@@ -19,10 +19,6 @@ $(document).ready(function(){
       })
 
 
-
-      var my_drawer = new WinChartsDrawer(items, $('#table'));
-
-
   });
 
 });
