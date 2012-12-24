@@ -1,19 +1,16 @@
-google.load("visualization", "1", {packages:["corechart"]});
-google.setOnLoadCallback(drawChart);
+function WinChartsDrawer(array_to_draw, container){
+  this.chart_array = array_to_draw;
+  this.container_to_draw_on = container;
+}
 
-function drawChart() {
+WinChartsDrawer.prototype.draw = function(){
+  google.load("visualization", "1", {packages:["corechart"]});
+  google.setOnLoadCallback(this.drawChart);
+};
 
 
+WinChartsDrawer.prototype.drawChart =  function drawChart() {
   var array = ['Event', 'Amount'];
-
-  //for (var i = 0; i < window.all_items.length; i += 1) {
-    //bla = window.all_items[i];
-    //array.push([bla[0], bla[1]]);
-  //};
-
-
-  //var data = google.visualization.arrayToDataTable(array
-  //);
 
   var data = google.visualization.arrayToDataTable([
     ['Year', 'Sales', 'Expenses'],
@@ -28,7 +25,6 @@ function drawChart() {
     hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
   };
 
-  var chart = new google.visualization.ColumnChart(document.getElementById
-                                                   ('table'));
+  var chart = new google.visualization.ColumnChart(this.container_to_draw_on);
   chart.draw(data, options);
-}
+};
