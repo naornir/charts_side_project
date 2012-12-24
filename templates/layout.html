@@ -1,0 +1,21 @@
+<!doctype html>
+<title>Restaurants</title>
+<!--<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">-->
+<div class=page>
+  <h1>layout header</h1>
+  {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+  {% endfor %}
+  {% block body %}
+
+    <script type=text/javascript src="{{url_for('static',
+     filename='jquery-1.7.1.min.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='underscore-min.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='backbone.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='app.js') }}"></script>
+    <ul></ul>
+  {% endblock %}
+</div>
