@@ -1,7 +1,5 @@
 $(document).ready(function(){
 
-  console.log('hellio');
-
   $.getJSON('/get_data', function(data) {
     var items = {};
     var attribute_to_sum = 'Event';
@@ -20,4 +18,5 @@ $(document).ready(function(){
           $('ul').append($('<li>').html(text));
       })
   });
+
 });

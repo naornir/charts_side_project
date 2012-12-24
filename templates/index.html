@@ -5,9 +5,21 @@
     <title>Nir charts experiment</title>
   </head>
   <body>
+   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <div id="table"></div>
+    <ul></ul>
   <h1 >hello my friend</h1>
 
-    {% extends "layout.html" %}
+    <script type=text/javascript src="{{url_for('static',
+     filename='jquery-1.7.1.min.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='underscore-min.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='backbone.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='app.js') }}"></script>
+    <script type=text/javascript src="{{url_for('static',
+     filename='draw_table.js') }}"></script>
 
   </body>
 </html>
