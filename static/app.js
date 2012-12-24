@@ -17,6 +17,12 @@ $(document).ready(function(){
           text =  key + '=' + value;
           $('ul').append($('<li>').html(text));
       })
+
+
+
+      var my_drawer = new WinChartsDrawer(items, $('#table'));
+
+
   });
 
 });
