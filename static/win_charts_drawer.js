@@ -2,7 +2,6 @@ var WinChartsDrawer = function(url, container, attribute_to_sum){
   this.given_url = url;
   this.given_container = container;
   this.attribute_to_sum = attribute_to_sum;
-
 }
 
 WinChartsDrawer.prototype.LoadDataFromServer = function(){
@@ -28,15 +27,11 @@ WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data){
     }
   });
 
-
-
   var new_array = [];
   new_array.push(['Event', 'Amount']);
 
   _.map(items, function (value, key) {
         new_array.push([key, value]);
-        //text =  key + '=' + value;
-        //$('ul').append($('<li>').html(text));
     })
 
   return new_array;
@@ -82,15 +77,3 @@ WinChartsDrawer.prototype.ChangeChartType = function (new_chart_type){
     this.chart.draw(this.good_data, this.options);
 };
 
-WinChartsDrawer.prototype.GetArrayForColumnChart = function() {
-    var new_array = [];
-    new_array.push(['Event', 'Amount']);
-
-    _.map(this.events_count, function (value, key) {
-          new_array.push([key, value]);
-          text =  key + '=' + value;
-          $('ul').append($('<li>').html(text));
-      })
-
-      return new_array;
-};
