@@ -30,6 +30,27 @@ DataView = Backbone.View.extend({
     return new_array;
   },
 
+  draw_table:function(){
+    var that = this;
+
+    google.load("visualization", "1", {
+      packages:["corechart"],callback:function(){ 
+      that.good_data = 
+        google.visualization.arrayToDataTable(that.events_count);
+
+      that.options = {
+        title: 'Events Aitpalgut',
+        hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+      };
+
+      that.chart = new google.visualization.PieChart
+                   (document.getElementById('table'));
+      that.chart.draw(that.good_data, that.options);
+    
+    }});
+
+  },
+
 
 });
 
@@ -39,6 +60,7 @@ bla = new DataView();
   $.getJSON('/get_users', function(data) {
     console.log('im back from server');
     bla.set_data(data);
+    bla.draw_table();
   });
 
 bla.render();
