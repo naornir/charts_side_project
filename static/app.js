@@ -6,7 +6,7 @@ $(document).ready(function(){
     //drawer.DrawTable();
   //});
 
-  var drawer2 = new WinChartsDrawer('/get_users', $('#table'), 'Device Model');
+  var drawer2 = new WinChartsDrawer('/get_users', $('#table2'), 'Device Model');
 
   drawer2.LoadDataFromServer();
   $(drawer2).bind('done_loading', function(e){

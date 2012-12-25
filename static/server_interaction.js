@@ -2,6 +2,7 @@ var WinChartsDrawer = function(url, container, attribute_to_sum){
   this.given_url = url;
   this.given_container = container;
   this.attribute_to_sum = attribute_to_sum;
+
 }
 
 WinChartsDrawer.prototype.LoadDataFromServer = function(){
@@ -47,7 +48,7 @@ WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
       hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
     };
 
-    var chart = new google.visualization.ColumnChart
+    var chart = new google.visualization.PieChart
                  (document.getElementById('table'));
     chart.draw(data, options);
   
