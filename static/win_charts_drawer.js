@@ -1,15 +1,10 @@
 var WinChartsDrawer = function(url, container, attribute_to_sum){
-  this.given_url = url;
-  this.given_container = container;
   this.attribute_to_sum = attribute_to_sum;
-}
-
+};
 
 WinChartsDrawer.prototype.SetData = function(data){
     this.events_count = this.GetArrayOfAttributesAmount(data);
 };
-
-
 
 WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data){
   var items = {};
@@ -38,9 +33,6 @@ WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data){
 WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
   var that = this;
   google.load("visualization", "1", {packages:["corechart"],callback: function(){
-  
-    console.log('this is callback');
-
     that.good_data = 
       google.visualization.arrayToDataTable(that.events_count);
 
@@ -55,7 +47,6 @@ WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
   
   }});
 };
-
 
 WinChartsDrawer.prototype.ChangeChartType = function (new_chart_type){
     if (new_chart_type == 'pie'){
