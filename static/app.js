@@ -6,6 +6,15 @@ $(document).ready(function(){
   //$(drawer).bind('done_loading', function(e){
     //drawer.DrawTable();
   //});
+  //
+
+  $('#char_type_selector').change(function(e){
+    console.log(e);
+    var new_type = $('#char_type_selector').find(':selected').text();
+    drawer2.ChangeChartType(new_type);
+
+    
+  });
 
   drawer2 = new WinChartsDrawer('/get_users', $('#table2'), 'Device Model');
 
