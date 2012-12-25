@@ -4,25 +4,29 @@ var WinChartsDrawer = function(url, container){
 }
 
 WinChartsDrawer.prototype.LoadDataFromServer = function(){
-
   var that = this;
   $.getJSON(this.given_url, function(data) {
     var items = {};
     var attribute_to_sum = 'Event';
-
-    $.each(data, function(key, val) {
-      if (items[val[attribute_to_sum]] === undefined){
-        items[val[attribute_to_sum]] = 0;
-      }
-      else{
-        items[val[attribute_to_sum]]++;
-      }
-    });
-
-    that.events_count = items;
+    that.events_count = that.GetArrayOfAttributesAmount(data, attribute_to_sum);
     $(that).trigger('done_loading');
 
   });
+};
+
+WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data, attribute_to_sum){
+  var items = {};
+
+  $.each(data, function(key, val) {
+    if (items[val[attribute_to_sum]] === undefined){
+      items[val[attribute_to_sum]] = 0;
+    }
+    else{
+      items[val[attribute_to_sum]]++;
+    }
+  });
+  return items;
+
 };
 
 WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
@@ -58,5 +62,6 @@ WinChartsDrawer.prototype.GetArrayForColumnChart = function() {
           text =  key + '=' + value;
           $('ul').append($('<li>').html(text));
       })
+
       return new_array;
 };
