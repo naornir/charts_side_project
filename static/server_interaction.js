@@ -66,6 +66,10 @@ WinChartsDrawer.prototype.ChangeChartType = function (new_chart_type){
       this.chart = new google.visualization.ColumnChart
                    (document.getElementById('table'));
     }
+    else if (new_chart_type == 'line'){
+      this.chart = new google.visualization.LineChart
+                   (document.getElementById('table'));
+    }
 
     this.chart.draw(this.good_data, this.options);
 };
