@@ -32,7 +32,9 @@ WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data){
 
 WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
   var that = this;
-  google.load("visualization", "1", {packages:["corechart"],callback: function(){
+
+  google.load("visualization", "1", {
+    packages:["corechart"],callback:function(){ 
     that.good_data = 
       google.visualization.arrayToDataTable(that.events_count);
 
