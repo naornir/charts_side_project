@@ -41,18 +41,33 @@ WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
   
     console.log('this is callback');
 
-    var data = google.visualization.arrayToDataTable(that.GetArrayForColumnChart());
+    that.good_data = 
+      google.visualization.arrayToDataTable(that.GetArrayForColumnChart());
 
-    var options = {
+    that.options = {
       title: 'Events Aitpalgut',
       hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
     };
 
-    var chart = new google.visualization.PieChart
+    that.chart = new google.visualization.PieChart
                  (document.getElementById('table'));
-    chart.draw(data, options);
+    that.chart.draw(that.good_data, that.options);
   
   }});
+};
+
+
+WinChartsDrawer.prototype.ChangeChartType = function (new_chart_type){
+    if (new_chart_type == 'pie'){
+      this.chart = new google.visualization.PieChart
+                   (document.getElementById('table'));
+    }
+    else if (new_chart_type == 'column'){
+      this.chart = new google.visualization.ColumnChart
+                   (document.getElementById('table'));
+    }
+
+    this.chart.draw(this.good_data, this.options);
 };
 
 WinChartsDrawer.prototype.GetArrayForColumnChart = function() {
