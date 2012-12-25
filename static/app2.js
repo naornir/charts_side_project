@@ -35,7 +35,7 @@ DataView = Backbone.View.extend({
 
     google.load("visualization", "1", {
       packages:["corechart"],callback:function(){ 
-      that.good_data = 
+      that.events_count_as_google_array = 
         google.visualization.arrayToDataTable(that.events_count);
 
       that.options = {
@@ -45,7 +45,7 @@ DataView = Backbone.View.extend({
 
       that.chart = new google.visualization.PieChart
                    (document.getElementById('table'));
-      that.chart.draw(that.good_data, that.options);
+      that.chart.draw(that.events_count_as_google_array , that.options);
     
     }});
 
