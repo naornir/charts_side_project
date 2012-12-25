@@ -4,16 +4,6 @@ var WinChartsDrawer = function(url, container, attribute_to_sum){
   this.attribute_to_sum = attribute_to_sum;
 }
 
-WinChartsDrawer.prototype.LoadDataFromServer = function(){
-  var that = this;
-  $.getJSON(this.given_url, function(data) {
-    var items = {};
-    that.events_count = that.GetArrayOfAttributesAmount(data);
-    $(that).trigger('done_loading');
-
-  });
-};
-
 
 WinChartsDrawer.prototype.SetData = function(data){
     this.events_count = this.GetArrayOfAttributesAmount(data);
