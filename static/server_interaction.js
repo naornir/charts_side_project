@@ -4,6 +4,7 @@ var WinChartsDrawer = function(url, container){
 }
 
 WinChartsDrawer.prototype.LoadDataFromServer = function(){
+
   var that = this;
   $.getJSON(this.given_url, function(data) {
     var items = {};
@@ -18,18 +19,44 @@ WinChartsDrawer.prototype.LoadDataFromServer = function(){
       }
     });
 
-  that.nir = items;
-  $(that).trigger('done_loading');
+    that.events_count = items;
+    $(that).trigger('done_loading');
+
   });
 };
 
 WinChartsDrawer.prototype.DrawTable = function(items_to_draw){
-  console.log('will now draw all the items from server');
   var that = this;
-  _(this.nir).each(function(key, value){
-    console.log(value + ': ' + key)
-    $(that.given_container).append("<p>" +value + ': ' + key + "</p>");
-  });
+  google.load("visualization", "1", {packages:["corechart"],callback: function(){
+    _(that.events_count).each(function(key, value){
+      console.log(value + ': ' + key)
+      $(that.given_container).append("<p>" +value + ': ' + key + "</p>");
+    });
+  
+    console.log('this is callback');
+
+    var data = google.visualization.arrayToDataTable(that.GetArrayForColumnChart());
+
+    var options = {
+      title: 'Events Aitpalgut',
+      hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
+    };
+
+    var chart = new google.visualization.ColumnChart
+                 (document.getElementById('table'));
+    chart.draw(data, options);
+  
+  }});
 };
 
+WinChartsDrawer.prototype.GetArrayForColumnChart = function() {
+    var new_array = [];
+    new_array.push(['Event', 'Amount']);
 
+    _.map(this.events_count, function (value, key) {
+          new_array.push([key, value]);
+          text =  key + '=' + value;
+          $('ul').append($('<li>').html(text));
+      })
+      return new_array;
+};
