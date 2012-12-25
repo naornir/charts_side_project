@@ -1,8 +1,7 @@
 DataView = Backbone.View.extend({
   el: $('body'),
   render: function(){
-    console.log('ya kaki');
-    $(this.el).append($("<p>yallla</p>"));
+    this.draw_table();
   },
   set_data: function(data_to_set){
     this.events_count =
@@ -32,6 +31,9 @@ DataView = Backbone.View.extend({
 
   draw_table:function(){
     var that = this;
+   
+    //google.load("visualization", "1", {
+      //packages:["corechart"],callback:this.check_context});
 
     google.load("visualization", "1", {
       packages:["corechart"],callback:function(){ 
@@ -43,14 +45,38 @@ DataView = Backbone.View.extend({
         hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
       };
 
-      that.chart = new google.visualization.PieChart
-                   (document.getElementById('table'));
+      if (that.chart === undefined){
+        that.chart = new google.visualization.PieChart
+                     (document.getElementById('table'));
+      }
+
       that.chart.draw(that.events_count_as_google_array , that.options);
     
     }});
 
   },
 
+  check_context: function(){
+    var nir = 5;
+    console.log('ma iei');
+  },
+
+  change_chart_type: function(new_chart_type){
+    if (new_chart_type == 'pie'){
+      this.chart = new google.visualization.PieChart
+                   (document.getElementById('table'));
+    }
+    else if (new_chart_type == 'column'){
+      this.chart = new google.visualization.ColumnChart
+                   (document.getElementById('table'));
+    }
+    else if (new_chart_type == 'line'){
+      this.chart = new google.visualization.LineChart
+                   (document.getElementById('table'));
+    }
+    this.render();
+
+  },
 
 });
 
@@ -58,9 +84,11 @@ DataView = Backbone.View.extend({
 
 bla = new DataView();
   $.getJSON('/get_users', function(data) {
-    console.log('im back from server');
     bla.set_data(data);
-    bla.draw_table();
+    bla.render();
   });
 
-bla.render();
+$('#char_type_selector').change(function(e){
+  var new_type = $('#char_type_selector').find(':selected').text();
+  bla.change_chart_type(new_type);
+});
