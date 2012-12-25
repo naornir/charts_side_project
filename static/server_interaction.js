@@ -1,28 +1,29 @@
-var WinChartsDrawer = function(url, container){
+var WinChartsDrawer = function(url, container, attribute_to_sum){
   this.given_url = url;
   this.given_container = container;
+  this.attribute_to_sum = attribute_to_sum;
 }
 
 WinChartsDrawer.prototype.LoadDataFromServer = function(){
   var that = this;
   $.getJSON(this.given_url, function(data) {
     var items = {};
-    var attribute_to_sum = 'Event';
-    that.events_count = that.GetArrayOfAttributesAmount(data, attribute_to_sum);
+    that.events_count = that.GetArrayOfAttributesAmount(data);
     $(that).trigger('done_loading');
 
   });
 };
 
-WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data, attribute_to_sum){
+WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data){
   var items = {};
 
+  var that = this;
   $.each(data, function(key, val) {
-    if (items[val[attribute_to_sum]] === undefined){
-      items[val[attribute_to_sum]] = 0;
+    if (items[val[that.attribute_to_sum]] === undefined){
+      items[val[that.attribute_to_sum]] = 0;
     }
     else{
-      items[val[attribute_to_sum]]++;
+      items[val[that.attribute_to_sum]]++;
     }
   });
   return items;
