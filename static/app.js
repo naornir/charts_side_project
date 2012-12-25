@@ -12,4 +12,12 @@ $(document).ready(function(){
   $(drawer2).bind('done_loading', function(e){
     drawer2.DrawTable();
   });
+
+
+
+  $.getJSON('/get_users', function(data) {
+    console.log('im back from server');
+  });
+
+
 });
