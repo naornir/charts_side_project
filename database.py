@@ -18,7 +18,7 @@ def index():
     #friends.insert(nir)
 
     result = []
-    for each_friend in db.data.find().limit(500):
+    for each_friend in db.data.find().limit(5000):
         #doc = dumps(each_friend)
         result.append(each_friend)
 

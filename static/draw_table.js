@@ -1,7 +1,7 @@
   google.load("visualization", "1", {packages:["corechart"]});
-  google.setOnLoadCallback(draw_ya_maniak);
+  google.setOnLoadCallback(draw);
 
-  function draw_ya_maniak(){
+  function draw(){
     console.log('this is draw chart');
     var array = ['Event', 'Amount'];
 
@@ -32,19 +32,9 @@
       })
 
     var data = google.visualization.arrayToDataTable(new_array);
-    
-
-      
-    //var data = google.visualization.arrayToDataTable([
-      //['Year', 'Sales', 'Expenses'],
-      //['2004',  1000,      400],
-      //['2005',  1170,      460],
-      //['2006',  660,       1120],
-      //['2007',  1030,      540]
-    //]);
 
     var options = {
-      title: 'Company Performance',
+      title: 'Events Aitpalgut',
       hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
     };
 
