@@ -8,15 +8,17 @@ $(document).ready(function(){
 
   drawer2 = new WinChartsDrawer('/get_users', $('#table2'), 'Device Model');
 
-  drawer2.LoadDataFromServer();
-  $(drawer2).bind('done_loading', function(e){
-    drawer2.DrawTable();
-  });
+  //drawer2.LoadDataFromServer();
+  //$(drawer2).bind('done_loading', function(e){
+    //drawer2.DrawTable();
+  //});
 
 
 
   $.getJSON('/get_users', function(data) {
     console.log('im back from server');
+    drawer2.SetData(data);
+    drawer2.DrawTable();
   });
 
 

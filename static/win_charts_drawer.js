@@ -14,6 +14,13 @@ WinChartsDrawer.prototype.LoadDataFromServer = function(){
   });
 };
 
+
+WinChartsDrawer.prototype.SetData = function(data){
+    this.events_count = this.GetArrayOfAttributesAmount(data);
+};
+
+
+
 WinChartsDrawer.prototype.GetArrayOfAttributesAmount = function(data){
   var items = {};
 
