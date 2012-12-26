@@ -5,7 +5,12 @@ DataView = Backbone.View.extend({
   },
   set_data: function(data_to_set){
     this.events_count =
-      this.get_array_of_attributes_amount(data_to_set);
+      this.get_array_of_attributes_amount(data_to_set['results']['data']);
+
+    this.title = this.get_title(data_to_set['results']['client_headers']);
+  },
+  get_title: function(client_headers){
+    return client_headers[0][0]['value'];
   },
   attribute_to_sum: 'Device Model',
   get_array_of_attributes_amount: function(data_to_set){
@@ -30,7 +35,7 @@ DataView = Backbone.View.extend({
         google.visualization.arrayToDataTable(that.events_count);
 
       that.options = {
-        title: 'Events Aitpalgut',
+        title: that.title,
         hAxis: {title: 'Year', titleTextStyle: {color: 'red'}}
       };
 
@@ -73,7 +78,7 @@ DataView = Backbone.View.extend({
 
 bla = new DataView();
   $.getJSON('/get_json_sample', function(data) {
-    bla.set_data(data['results']['data']);
+    bla.set_data(data);
     bla.render();
   });
 
