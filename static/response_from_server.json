@@ -1,0 +1,62 @@
+{
+    "_id": "50daa5e3adb87336c7000009", 
+    "args": {
+        "fields": [], 
+        "filter_": [], 
+        "sort": [], 
+        "timeframe": {
+            "value": "last365days"
+        }
+    }, 
+    "created_on": {
+        "$date": 1356506595912
+    }, 
+    "elapsed": 1.0, 
+    "file": null, 
+    "modified_on": {
+        "$date": 1356506596053
+    }, 
+    "out": null, 
+    "ref": "raw", 
+    "results": {
+        "count": 9, 
+        "data": [
+            [
+                ""
+            ], 
+            [
+                1111.0
+            ], 
+            [
+                ""
+            ], 
+            [
+                1111.0
+            ], 
+            [
+                ""
+            ], 
+            [
+                2222.0
+            ], 
+            [
+                ""
+            ], 
+            [
+                ""
+            ], 
+            [
+                ""
+            ]
+        ], 
+        "limit": 100, 
+        "page": 1, 
+        "pages": 1.0, 
+        "params": [
+            "fb user"
+        ], 
+        "skip": 0
+    }, 
+    "status": "success", 
+    "type": "Raw"
+}

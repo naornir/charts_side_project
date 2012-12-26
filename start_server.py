@@ -17,5 +17,10 @@ def get_data():
 def get_data():
     return get_users()
 
+@app.route('/get_json_sample')
+def get_data():
+    file = open('static/response_from_server.json')
+    return file.read()
+
 if __name__ == "__main__":
     app.run(debug = True)
