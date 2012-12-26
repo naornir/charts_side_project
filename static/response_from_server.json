@@ -1,62 +1,95 @@
 {
-    "_id": "50daa5e3adb87336c7000009", 
+    "_id": "50db0c42e16ddf386b000029", 
     "args": {
-        "fields": [], 
-        "filter_": [], 
+        "cols": [], 
+        "filters": [], 
+        "measures": [
+            {
+                "agg": "count", 
+                "attrs": [
+                    {
+                        "attr": "device", 
+                        "title": "device"
+                    }
+                ], 
+                "calc": null, 
+                "filters": [], 
+                "timespan": "", 
+                "title": "count device"
+            }
+        ], 
+        "rows": [
+            {
+                "attr": "device", 
+                "title": "device"
+            }
+        ], 
         "sort": [], 
+        "timebreakdown": {}, 
         "timeframe": {
-            "value": "last365days"
+            "value": [
+                "25-12-2012 00:00:00 GMT", 
+                "28-12-2012 00:00:00 GMT"
+            ]
         }
     }, 
     "created_on": {
-        "$date": 1356506595912
+        "$date": 1356532802449
     }, 
     "elapsed": 1.0, 
     "file": null, 
     "modified_on": {
-        "$date": 1356506596053
+        "$date": 1356532802767
     }, 
-    "out": null, 
-    "ref": "raw", 
+    "out": "report_metrics__b3d786b5dd592d38a312f36dca694d57_0", 
+    "ref": "b3d786b5dd592d38a312f36dca694d57", 
     "results": {
-        "count": 9, 
+        "client_headers": [
+            [
+                {
+                    "rows": 1, 
+                    "value": "device"
+                }, 
+                {
+                    "rows": 1, 
+                    "value": "count device"
+                }
+            ]
+        ], 
+        "count": 4, 
         "data": [
             [
-                ""
+                "Android", 
+                203.0
             ], 
             [
-                1111.0
+                "GalaxyS2", 
+                212.0
             ], 
             [
-                ""
+                "GalaxyS3", 
+                192.0
             ], 
             [
-                1111.0
-            ], 
+                "Iphone", 
+                201.0
+            ]
+        ], 
+        "header": [
             [
-                ""
-            ], 
-            [
-                2222.0
-            ], 
-            [
-                ""
-            ], 
-            [
-                ""
-            ], 
-            [
-                ""
+                "device", 
+                "count device"
             ]
         ], 
         "limit": 100, 
         "page": 1, 
         "pages": 1.0, 
         "params": [
-            "fb user"
+            "device", 
+            "count device"
         ], 
         "skip": 0
     }, 
     "status": "success", 
-    "type": "Raw"
+    "type": "Metrics"
 }

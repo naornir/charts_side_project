@@ -8,23 +8,12 @@ DataView = Backbone.View.extend({
       this.get_array_of_attributes_amount(data_to_set);
   },
   attribute_to_sum: 'Device Model',
-  get_array_of_attributes_amount: function(data){
-    var items = {};
-    var that = this;
-    $.each(data, function(key, val) {
-      if (items[val[that.attribute_to_sum]] === undefined){
-        items[val[that.attribute_to_sum]] = 0;
-      }
-      else{
-        items[val[that.attribute_to_sum]]++;
-      }
-    });
-
+  get_array_of_attributes_amount: function(data_to_set){
     var new_array = [];
     new_array.push(['Event', 'Amount']);
 
-    _.map(items, function (value, key) {
-          new_array.push([key, value]);
+    _.each(data_to_set, function (value) {
+          new_array.push(value);
       })
     return new_array;
   },
@@ -83,8 +72,8 @@ DataView = Backbone.View.extend({
 
 
 bla = new DataView();
-  $.getJSON('/get_users', function(data) {
-    bla.set_data(data);
+  $.getJSON('/get_json_sample', function(data) {
+    bla.set_data(data['results']['data']);
     bla.render();
   });
 
