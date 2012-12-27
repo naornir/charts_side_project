@@ -18,13 +18,8 @@ DataView = Backbone.View.extend({
     var new_array = [];
 //    new_array.push( params );
 
-    var secondary_category_unique_values = {};
 
-    _.each(data_to_set, function ( element, index, list){
-      secondary_category_unique_values[element[1] ] = 'bla';
-    } );
-
-    new_array[0] = [_.keys(secondary_category_unique_values)];
+    new_array[0] = [this.getUniqueValuesByIndex(data_to_set, 1) ];
     new_array[0].unshift(params[0]);
     new_array[0] = _(new_array[0]).flatten();
 
@@ -47,6 +42,18 @@ DataView = Backbone.View.extend({
     });
     return new_array;
   },
+
+
+  getUniqueValuesByIndex: function ( arrayOfArrays, index_to_retrive ) { 
+    var secondary_category_unique_values = {};
+
+    _.each(arrayOfArrays, function ( element, index, list){
+      secondary_category_unique_values[ element[ index_to_retrive ] ] = 'bla';
+    } );
+
+    return _(secondary_category_unique_values).keys();
+  },
+
 
   draw_table:function(){
     var that = this;
