@@ -25,19 +25,13 @@ DataView = Backbone.View.extend({
     // ]
     var result_table = [];
 
-    result_table[0] = [this.getUniqueValuesByIndex(data_to_set, 1) ];
-    result_table[0].unshift(params[0]);
-    result_table[0] = _(result_table[0]).flatten();
+    var level = 0;
+    result_table[level] = [this.getUniqueValuesByIndex(data_to_set, level + 1) ];
+    result_table[level].unshift(params[0]);
+    result_table[level] = _(result_table[0]).flatten();
 
-    var category_values = {}
+    category_values = this.categoriesAndValuesArray(data_to_set, 0 , 2);
 
-    _.each(data_to_set, function (value) {
-      var category = value[0]
-      if (category_values[category] === undefined){
-        category_values[category] = []
-      }
-      category_values[category].push(value[2]);
-      })
 
     _.each(category_values, function(value, key, list){
       result_table_item = value.unshift(key);
@@ -55,6 +49,20 @@ DataView = Backbone.View.extend({
     } );
 
     return _(secondary_category_unique_values).keys();
+  },
+
+  categoriesAndValuesArray: function ( arrayOfArrays, categoryIndex, valueOfCategoryIndex ) { 
+    var category_values = {}
+
+    _.each(arrayOfArrays, function (value) {
+      var category = value[ categoryIndex ]
+      if (category_values[category] === undefined){
+        category_values[category] = []
+      }
+      category_values[category].push( value [ valueOfCategoryIndex ] );
+      })
+
+    return category_values;
   },
 
 
