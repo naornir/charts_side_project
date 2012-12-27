@@ -1,0 +1,156 @@
+{
+    "_id": "50dc1a6ae16ddf386b00005d", 
+    "args": {
+        "cols": [], 
+        "filters": [], 
+        "measures": [
+            {
+                "agg": "count", 
+                "attrs": [
+                    {
+                        "attr": "platform", 
+                        "title": "platform"
+                    }
+                ], 
+                "calc": null, 
+                "filters": [
+                    {
+                        "attr": "fact", 
+                        "op": "$eq", 
+                        "title": "fact = install", 
+                        "value": "install"
+                    }
+                ], 
+                "timespan": "", 
+                "title": "platforms counts"
+            }
+        ], 
+        "rows": [
+            {
+                "attr": "platform", 
+                "title": "platform"
+            }, 
+            {
+                "attr": "application", 
+                "title": "application"
+            }
+        ], 
+        "sort": [], 
+        "timebreakdown": {}, 
+        "timeframe": {
+            "value": [
+                "27-12-2012 00:00:00 GMT", 
+                "13-02-2013 00:00:00 GMT"
+            ]
+        }
+    }, 
+    "created_on": {
+        "$date": 1356601962755
+    }, 
+    "elapsed": 1.0, 
+    "file": null, 
+    "modified_on": {
+        "$date": 1356601963049
+    }, 
+    "out": "report_metrics__b3d786b5dd592d38a312f36dca694d57_0", 
+    "ref": "b3d786b5dd592d38a312f36dca694d57", 
+    "results": {
+        "client_headers": [
+            [
+                {
+                    "rows": 1, 
+                    "value": "platform"
+                }, 
+                {
+                    "rows": 1, 
+                    "value": "application"
+                }, 
+                {
+                    "rows": 1, 
+                    "value": "platforms counts"
+                }
+            ]
+        ], 
+        "count": 12, 
+        "data": [
+            [
+                "Android", 
+                "angry birds", 
+                50.0
+            ], 
+            [
+                "Android", 
+                "farmvielle", 
+                35.0
+            ], 
+            [
+                "Android", 
+                "quickwords", 
+                54.0
+            ], 
+            [
+                "GalaxyS2", 
+                "angry birds", 
+                41.0
+            ], 
+            [
+                "GalaxyS2", 
+                "farmvielle", 
+                39.0
+            ], 
+            [
+                "GalaxyS2", 
+                "quickwords", 
+                28.0
+            ], 
+            [
+                "GalaxyS3", 
+                "angry birds", 
+                38.0
+            ], 
+            [
+                "GalaxyS3", 
+                "farmvielle", 
+                51.0
+            ], 
+            [
+                "GalaxyS3", 
+                "quickwords", 
+                40.0
+            ], 
+            [
+                "Iphone", 
+                "angry birds", 
+                46.0
+            ], 
+            [
+                "Iphone", 
+                "farmvielle", 
+                41.0
+            ], 
+            [
+                "Iphone", 
+                "quickwords", 
+                37.0
+            ]
+        ], 
+        "header": [
+            [
+                "platform", 
+                "application", 
+                "platforms counts"
+            ]
+        ], 
+        "limit": 100, 
+        "page": 1, 
+        "pages": 1.0, 
+        "params": [
+            "platform", 
+            "application", 
+            "platforms counts"
+        ], 
+        "skip": 0
+    }, 
+    "status": "success", 
+    "type": "Metrics"
+}

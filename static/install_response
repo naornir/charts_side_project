@@ -1,0 +1,104 @@
+{
+    "_id": "50dc125be16ddf386b000046", 
+    "args": {
+        "cols": [], 
+        "filters": [], 
+        "measures": [
+            {
+                "agg": "count", 
+                "attrs": [
+                    {
+                        "attr": "platform", 
+                        "title": "platform"
+                    }
+                ], 
+                "calc": null, 
+                "filters": [
+                    {
+                        "attr": "fact", 
+                        "op": "$eq", 
+                        "title": "fact = install", 
+                        "value": "install"
+                    }
+                ], 
+                "timespan": "", 
+                "title": "platform counts"
+            }
+        ], 
+        "rows": [
+            {
+                "attr": "platform", 
+                "title": "platform", 
+                "tolerance": null
+            }
+        ], 
+        "sort": [], 
+        "timebreakdown": {}, 
+        "timeframe": {
+            "value": "yesterday"
+        }
+    }, 
+    "created_on": {
+        "$date": 1356599899287
+    }, 
+    "elapsed": 1.0, 
+    "file": null, 
+    "modified_on": {
+        "$date": 1356599899424
+    }, 
+    "out": "report_metrics__b3d786b5dd592d38a312f36dca694d57_0", 
+    "ref": "b3d786b5dd592d38a312f36dca694d57", 
+    "results": {
+        "client_headers": [
+            [
+                {
+                    "rows": 1, 
+                    "value": "platform"
+                }, 
+                {
+                    "rows": 1, 
+                    "value": "platform counts"
+                }
+            ]
+        ], 
+        "count": 5, 
+        "data": [
+            [
+                "Android", 
+                26.0
+            ], 
+            [
+                "GalaxyS2", 
+                20.0
+            ], 
+            [
+                "GalaxyS3", 
+                32.0
+            ], 
+            [
+                "Iphone", 
+                21.0
+            ], 
+            [
+                null, 
+                2.0
+            ]
+        ], 
+        "header": [
+            [
+                "platform", 
+                "platform counts"
+            ]
+        ], 
+        "limit": 100, 
+        "page": 1, 
+        "pages": 1.0, 
+        "params": [
+            "platform", 
+            "platform counts"
+        ], 
+        "skip": 0
+    }, 
+    "status": "success", 
+    "type": "Metrics"
+}

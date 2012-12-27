@@ -19,7 +19,7 @@ def get_data():
 
 @app.route('/get_json_sample')
 def get_data():
-    file = open('static/response_from_server.json')
+    file = open('static/platform_application_count')
     return file.read()
 
 if __name__ == "__main__":

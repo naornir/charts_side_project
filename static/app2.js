@@ -5,21 +5,46 @@ DataView = Backbone.View.extend({
   },
   set_data: function(data_to_set){
     this.events_count =
-      this.get_array_of_attributes_amount(data_to_set['results']['data']);
+      this.get_array_of_attributes_amount(data_to_set['results']['data'],
+                                         data_to_set['results']['params']);
 
     this.title = this.get_title(data_to_set['results']['client_headers']);
   },
   get_title: function(client_headers){
-    return client_headers[0][0]['value'];
+    return "This will be the title"
   },
   attribute_to_sum: 'Device Model',
-  get_array_of_attributes_amount: function(data_to_set){
+  get_array_of_attributes_amount: function(data_to_set, params){
     var new_array = [];
-    new_array.push(['Event', 'Amount']);
+//    new_array.push( params );
+
+    var secondary_category_unique_values = {};
+
+    _.each(data_to_set, function ( element, index, list){
+      secondary_category_unique_values[element[1] ] = 'bla';
+    } );
+
+    new_array[0] = [_.keys(secondary_category_unique_values)];
+    new_array[0].unshift(params[0]);
+    new_array[0] = _(new_array[0]).flatten();
+
+
+
+
+    var category_values = {}
 
     _.each(data_to_set, function (value) {
-          new_array.push(value);
+      var category = value[0]
+      if (category_values[category] === undefined){
+        category_values[category] = []
+      }
+      category_values[category].push(value[2]);
       })
+
+    _.each(category_values, function(value, key, list){
+      new_array_item = value.unshift(key);
+      new_array.push(value);
+    });
     return new_array;
   },
 
