@@ -14,8 +14,7 @@ DataView = Backbone.View.extend({
     return "This will be the title"
   },
   attribute_to_sum: 'Device Model',
-  get_array_of_attributes_amount: function(data_to_set, params){
-    
+
     /// This array should be at the end in the format of 
     // [
          //[ 'Platform', 'FarmVielle', 'AngryBirds', SlotsCraze' ] 
@@ -23,21 +22,18 @@ DataView = Backbone.View.extend({
          //[ 'Iphone',   '5000',       '300 ',       '400' ] 
          //[ 'Nokia',    '5000',       '300 ',       '400' ] 
     // ]
+  get_array_of_attributes_amount: function(data_to_set, params){
     var result_table = [];
 
     var level = 0;
     result_table[ level ] = this.header( data_to_set, params, level );
-    //result_table[level] = [this.getUniqueValuesByIndex(data_to_set, level + 1) ];
-    //result_table[level].unshift(params[0]);
-    //result_table[level] = _(result_table[0]).flatten();
 
     category_values = this.categoriesAndValuesArray(data_to_set, 0 , 2);
 
-
-    _.each(category_values, function(value, key, list){
-      value.unshift(key);
-      result_table.push(value);
+    _(category_values).each(function(each_array){
+      result_table.push(each_array);
     });
+
     return result_table;
   },
 
@@ -61,6 +57,7 @@ DataView = Backbone.View.extend({
   },
 
   categoriesAndValuesArray: function ( arrayOfArrays, categoryIndex, valueOfCategoryIndex ) { 
+    var result_array = [ ];
     var category_values = {}
 
     _.each(arrayOfArrays, function (value) {
@@ -71,7 +68,12 @@ DataView = Backbone.View.extend({
       category_values[category].push( value [ valueOfCategoryIndex ] );
       })
 
-    return category_values;
+    _.each(category_values, function(value, key, list){
+      value.unshift(key);
+      result_array.push(value);
+    });
+
+    return result_array;
   },
 
 
