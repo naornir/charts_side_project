@@ -15,16 +15,19 @@ DataView = Backbone.View.extend({
   },
   attribute_to_sum: 'Device Model',
   get_array_of_attributes_amount: function(data_to_set, params){
-    var new_array = [];
-//    new_array.push( params );
+    
+    /// This array should be at the end in the format of 
+    // [
+    // [ 'Platform', 'FarmVielle', 'AngryBirds', SlotsCraze' ] 
+    // [ 'Android',  '100',        '200 ',       '300' ] 
+    // [ 'Iphone',   '5000',       '300 ',       '400' ] 
+    // [ 'Nokia',    '5000',       '300 ',       '400' ] 
+    // ]
+    var result_table = [];
 
-
-    new_array[0] = [this.getUniqueValuesByIndex(data_to_set, 1) ];
-    new_array[0].unshift(params[0]);
-    new_array[0] = _(new_array[0]).flatten();
-
-
-
+    result_table[0] = [this.getUniqueValuesByIndex(data_to_set, 1) ];
+    result_table[0].unshift(params[0]);
+    result_table[0] = _(result_table[0]).flatten();
 
     var category_values = {}
 
@@ -37,10 +40,10 @@ DataView = Backbone.View.extend({
       })
 
     _.each(category_values, function(value, key, list){
-      new_array_item = value.unshift(key);
-      new_array.push(value);
+      result_table_item = value.unshift(key);
+      result_table.push(value);
     });
-    return new_array;
+    return result_table;
   },
 
 
