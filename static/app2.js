@@ -18,17 +18,18 @@ DataView = Backbone.View.extend({
     
     /// This array should be at the end in the format of 
     // [
-    // [ 'Platform', 'FarmVielle', 'AngryBirds', SlotsCraze' ] 
-    // [ 'Android',  '100',        '200 ',       '300' ] 
-    // [ 'Iphone',   '5000',       '300 ',       '400' ] 
-    // [ 'Nokia',    '5000',       '300 ',       '400' ] 
+         //[ 'Platform', 'FarmVielle', 'AngryBirds', SlotsCraze' ] 
+         //[ 'Android',  '100',        '200 ',       '300' ] 
+         //[ 'Iphone',   '5000',       '300 ',       '400' ] 
+         //[ 'Nokia',    '5000',       '300 ',       '400' ] 
     // ]
     var result_table = [];
 
     var level = 0;
-    result_table[level] = [this.getUniqueValuesByIndex(data_to_set, level + 1) ];
-    result_table[level].unshift(params[0]);
-    result_table[level] = _(result_table[0]).flatten();
+    result_table[ level ] = this.header( data_to_set, params, level );
+    //result_table[level] = [this.getUniqueValuesByIndex(data_to_set, level + 1) ];
+    //result_table[level].unshift(params[0]);
+    //result_table[level] = _(result_table[0]).flatten();
 
     category_values = this.categoriesAndValuesArray(data_to_set, 0 , 2);
 
@@ -39,6 +40,14 @@ DataView = Backbone.View.extend({
     });
     return result_table;
   },
+
+
+  header: function (data_to_set, params, level ) { 
+    result =  [this.getUniqueValuesByIndex(data_to_set, level + 1) ];
+    result.unshift(params[ level ] );
+    result =  _( result ).flatten();
+    return result;
+  } ,
 
 
   getUniqueValuesByIndex: function ( arrayOfArrays, index_to_retrive ) { 
