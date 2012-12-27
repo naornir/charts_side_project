@@ -35,7 +35,7 @@ DataView = Backbone.View.extend({
 
 
     _.each(category_values, function(value, key, list){
-      result_table_item = value.unshift(key);
+      value.unshift(key);
       result_table.push(value);
     });
     return result_table;
